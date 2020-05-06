@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Toastmasters Speech Timer</title>
+        <link rel="stylesheet" type="text/css" href="timer_styles.css"/>
+    </head>
+    <body>
+        <div id="top_row_container">
+            <div id="column_container">
+                <div id="settings" class="container">
+                    <select id="options">
+                        <option value="table_topics" data-green="1" data-yellow="1.5" data-red="2">Table Topics (2 minutes max)</option>
+                        <option value="Normal" data-green="5" data-yellow="6" data-red="7">Normal (5-7 minutes)</option>
+                        <option value="ice_breaker" data-green="4" data-yellow="5" data-red="6">Ice Breaker (4-6 minutes)</option>
+                        <option value="ind_evaluation" data-green="2" data-yellow="2.5" data-red="3">Individual Evaluations (2-3 minutes)</option>
+                        <option value="custom" data-green="0" data-yellow="0" data-red="0">Custom</option>
+                    </select>
+                </div>
+                
+                <div class="container">
+                    <label class="custom_speech" hidden>Minimum: <input type="text" id="min_time"/> Maximum: <input type="text" id="max_time"/></label>
+                </div>
+    
+                <div class="container">
+                    <label class="custom_speech" hidden>Green: <input type="text" id="when_green"/></label>
+                    <label class="custom_speech" hidden>Yellow: <input type="text" id="when_yellow"/></label>
+                    <label class="custom_speech" hidden>Red: <input type="text" id="when_red"/></label>  
+                </div>
+                
+                <div class="container">
+                    <label>Speaker: <input type="text" id="speaker"/></label>
+                </div>
+                <div class="container">
+                    <label id="lbl_speech"></label>
+                </div>
+        
+                <div class="container">
+                    <input type="button" value="Start" id="speech_start"/>
+                    <input type="button" value="Pause" id="btn_pause"/>
+                    <input type="button" value="Done" id="speech_done"/>
+                </div>
+        
+                <div class="container">
+                    <input style="margin-right: 5px;" type="button" value="Results" id="btn_list_results"/>
+                    <input type="button" value="Clear Local Toastmaster Storage" id="btn_clear"/>
+                </div>
+            </div>
+
+            <div id="column_fill"></div>
+        </div>
+        
+
+        <div id="notification_box"></div>
+
+    </body>
+
+    <script src="timer_code.js"></script>
+
+</html> 
