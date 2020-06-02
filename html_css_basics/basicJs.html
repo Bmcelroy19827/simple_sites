@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <!-- The three elements below are nested inside the head element -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JS Basics</title>
+        <style>
+            #container {
+                display: flex;
+            }
+            .box {
+                width: 100px;
+                height: 100px;
+                border: solid red 1px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="container">
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
+        <div>
+            <p><a href="index.html">Home without CSS</a></p>
+
+            <p><a href="somecss.html">Home with CSS</a></p>
+        </div>
+    </body>
+    <script>
+        let boxes = Array.from(document.querySelectorAll('.box')); 
+        //$$('.box');
+        boxes.forEach((box, index) => {
+            setTimeout(() => {
+                box.style.backgroundColor = 'blue';
+                box.innerHTML = "Color Changed";
+                }, 
+                Math.floor(index + 1) * 500);
+        });
+    </script>
+</html>

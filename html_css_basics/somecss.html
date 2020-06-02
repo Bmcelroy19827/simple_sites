@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Overview</title>
+    <style>
+        /* This targets every element on the page
+            This is a general target so any styling done to elements below this 
+            will overwrite any corresponding styles here */
+        :root {
+            background-color: beige;
+        }
+        /* This targets H1 elements */
+        h1 {
+            background-color: blue;
+        }
+        /* This targets all anchor elements that are inside of paragraph elements */
+        p a {
+            text-decoration: none;
+        }
+        /* This targets h1 and h2 elements */
+        h1, h2 {
+            text-decoration: underline;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        /* This targets any element with the "ID" of first_div */
+        #first_div {
+            border: thick double #32a1ce !important;
+        }
+        /* This targets all div elements */
+        div {
+            /* Normally styles "cascase" so the any styles of the same 
+                level of targeting but further down will overwrite any styling above
+                This border setting has been marked "!important" so it will overwrite
+                everything except an equally targeted element that is marked important below it
+                or a more specific targeted element above that has also been marked important 
+                (Such as the first_div ID that has marked its border setting !important) */
+            border: 2px solid black !important;
+            margin: 3px;
+            padding: 4px;
+        }
+        div {
+            border: none;
+        }
+        /* This targets all elements with a class of purple_letters */
+        .purple_letters{
+            color: purple;
+        }
+        /* This targets all elements with a class of bold */
+        .bold {
+            font-weight: bold;
+        }
+        /* note that elements can have more than one class. There is one element
+        in the example with a class of bold, one with a class of purple letters and
+        one with both classes. The classes are separated with a space */
+    </style>
+</head>
+<body>
+    <div id="first_div">
+        <h1>This is the big heading, we'll talk about whitespace</h1>
+        <p>This is a paragraph about white space.          The browser <span class="bold">will treat</span> a block of whitespace(spaces, tabs, new lines, etc) as a single blank space. 
+            In order to add spaces to a page for instance you use &amp;nbsp; There will be four of those after this&nbsp;&nbsp;&nbsp;&nbsp;and before this.
+            This is an example of <b>character entities</b>. 
+        </p>
+        <p>This is another paragraph about the big heading.
+            You can't just <span class="bold purple_letters">hit enter</span> to go to a new line on the webpage. You must use <br> tags <br> for this.
+        </p>  
+
+
+    </div>
+    <div id="second_div">
+        <a href="https://www.w3schools.com/">Here is a good resource for learning more about web design in general</a>
+        <br>
+        <a href="https://code.visualstudio.com/download">Here is a text editor that is a little prettier than notepad</a>   
+    </div>
+    <div>
+        <h2>This heading is slightly smaller</h2>
+        <p class="purple_letters">This is another paragraph,<a href="index.html"> Click here to see this page with no style</a></p>
+
+        <p>Check out <a href="basicJs.html">Basic JavaScript</a></p>
+    </div>
+    <!-- The Image on this page is inside an anchor tag so the image itself is a hyperlink -->
+    <a href="index.html"><Img src="speakerDude.png" alt="Picture of Crazy Speaker Dude"></a>
+</body>
+</html>
