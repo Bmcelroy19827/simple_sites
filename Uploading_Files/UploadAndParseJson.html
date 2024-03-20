@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Tests</title>
+    <style>
+        @media print{
+            .no-print {display: none;}
+        }
+        @media screen {
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="no-print">       
+        <img id="drop-area" src="PBJ_Pizza_small.JPG"/>
+        <label for="file-selector">Upload File: </label>
+        <input type="file" id="file-selector" accept=".json">
+    </div>
+    <div>
+        <label id="lblJson"></label>
+    </div>
+</body>
+<script defer>
+
+
+    function handleJsonO(jsonO){
+        console.log("Handling JSON", jsonO);
+        const jsonLbl = document.getElementById('lblJson');
+        jsonLbl.textContent = `${jsonO.Names[0].First} ${jsonO.Names[0].Last}`;
+    }
+
+
+    function handleFile(file){
+        const reader = new FileReader();
+        reader.addEventListener('load', e => {
+            const result = e.target.result;
+            let jsonO = JSON.parse(result);
+            console.log("File Read, passing JSON Object to handler");
+            handleJsonO(jsonO);
+        });
+        reader.addEventListener('progress', e => {
+            if(e.loaded && e.total){
+                const percent = (e.loaded / e.total) * 100;
+                console.log(`Reading File - Progress: ${Math.round(percent)}`);
+            }
+        });
+        reader.readAsText(file);
+    }
+
+
+    const fileSelector = document.getElementById('file-selector');
+    fileSelector.addEventListener("change", e => {
+        const chosenFile = e.target.files[0];
+        console.log("File Uploaded Manually");
+        handleFile(chosenFile);
+    });
+
+
+    const dropArea = document.getElementById('drop-area');
+    dropArea.addEventListener('dragover', e => {
+        e.stopPropagation();
+        e.preventDefault();
+        e.dataTransfer.dropEffect = 'copy';
+    });
+    dropArea.addEventListener('drop', e => {
+        e.stopPropagation();
+        e.preventDefault();
+        const chosenFile = e.dataTransfer.files[0];
+        console.log("File Uploaded Via Drop");
+        handleFile(chosenFile);
+    });
+
+
+</script>
+</html>
